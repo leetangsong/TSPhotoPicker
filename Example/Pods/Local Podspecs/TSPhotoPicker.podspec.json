@@ -24,7 +24,7 @@
   "source_files": "TSPhotoPicker/Classes/**/*",
   "resource_bundles": {
     "TSPhotoPicker": [
-      "TSPhotoPicker/Assets/*.png"
+      "TSPhotoPicker/Assets/*"
     ]
   },
   "pod_target_xcconfig": {
