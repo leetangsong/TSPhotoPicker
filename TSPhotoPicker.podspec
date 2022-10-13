@@ -33,7 +33,7 @@ TODO: Add long description of the pod here.
   s.source_files = 'TSPhotoPicker/Classes/**/*'
   
    s.resource_bundles = {
-     'TSPhotoPicker' => ['TSPhotoPicker/Assets/*.png']
+     'TSPhotoPicker' => ['TSPhotoPicker/Assets/*']
    }
    s.pod_target_xcconfig = {
      'CODE_SIGN_IDENTITY' => ''
