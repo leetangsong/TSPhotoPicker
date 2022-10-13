@@ -1,0 +1,6 @@
+framework module TSPhotoPicker {
+  umbrella header "TSPhotoPicker-umbrella.h"
+
+  export *
+  module * { export * }
+}

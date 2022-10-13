@@ -1,0 +1,27 @@
+PODS:
+  - Handy (0.3.0):
+    - SnapKit
+  - SnapKit (5.6.0)
+  - TSPhotoPicker (0.1.0):
+    - Handy
+
+DEPENDENCIES:
+  - TSPhotoPicker (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Handy
+    - SnapKit
+
+EXTERNAL SOURCES:
+  TSPhotoPicker:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Handy: 8c5a7d2b04d032f03c5712cd91e97b14231d0f72
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  TSPhotoPicker: 599fcb66b9752c6db32924cfdc3d64a727513dfa
+
+PODFILE CHECKSUM: c7bd1505e85f873e914faabfd6fb4e9ca5ecb9f2
+
+COCOAPODS: 1.11.3

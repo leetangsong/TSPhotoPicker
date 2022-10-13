@@ -1,0 +1,44 @@
+{
+  "name": "TSPhotoPicker",
+  "version": "0.1.0",
+  "summary": "A short description of TSPhotoPicker.",
+  "swift_versions": [
+    "5.0"
+  ],
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/leetangsong/TSPhotoPicker",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "leetangsong": "leetangsong@icloud.com"
+  },
+  "source": {
+    "git": "https://github.com/leetangsong/TSPhotoPicker.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "11.0"
+  },
+  "source_files": "TSPhotoPicker/Classes/**/*",
+  "resource_bundles": {
+    "TSPhotoPicker": [
+      "TSPhotoPicker/Assets/*.png"
+    ]
+  },
+  "pod_target_xcconfig": {
+    "CODE_SIGN_IDENTITY": ""
+  },
+  "frameworks": [
+    "AVFoundation",
+    "Photos",
+    "PhotosUI"
+  ],
+  "dependencies": {
+    "Handy": [
+
+    ]
+  },
+  "swift_version": "5.0"
+}
