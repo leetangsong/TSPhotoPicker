@@ -41,4 +41,5 @@ TODO: Add long description of the pod here.
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'AVFoundation', 'Photos', 'PhotosUI'
   s.dependency 'Handy'
+  s.dependency 'Kingfisher', '~> 6.3.1'
 end

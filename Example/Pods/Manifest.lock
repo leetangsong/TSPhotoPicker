@@ -1,9 +1,11 @@
 PODS:
-  - Handy (0.3.0):
+  - Handy (0.3.2):
     - SnapKit
+  - Kingfisher (6.3.1)
   - SnapKit (5.6.0)
   - TSPhotoPicker (0.1.0):
     - Handy
+    - Kingfisher (~> 6.3.1)
 
 DEPENDENCIES:
   - TSPhotoPicker (from `../`)
@@ -11,6 +13,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Handy
+    - Kingfisher
     - SnapKit
 
 EXTERNAL SOURCES:
@@ -18,9 +21,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Handy: 8c5a7d2b04d032f03c5712cd91e97b14231d0f72
+  Handy: 2da006a56c6afc889739fb0fe81c7e53c99360f6
+  Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
-  TSPhotoPicker: 3a5e901d1b62d6604a80b53d72330ab96248276e
+  TSPhotoPicker: 43bc5d2764901f9f6c5b2d529d99a5822111f9b9
 
 PODFILE CHECKSUM: c7bd1505e85f873e914faabfd6fb4e9ca5ecb9f2
 
