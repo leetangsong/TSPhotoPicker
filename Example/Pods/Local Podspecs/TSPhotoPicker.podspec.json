@@ -33,7 +33,9 @@
   "frameworks": [
     "AVFoundation",
     "Photos",
-    "PhotosUI"
+    "PhotosUI",
+    "CoreGraphics",
+    "CoreServices"
   ],
   "dependencies": {
     "Handy": [

@@ -1,5 +1,5 @@
 PODS:
-  - Handy (0.3.2):
+  - Handy (1.0.2):
     - SnapKit
   - Kingfisher (6.3.1)
   - SnapKit (5.6.0)
@@ -21,10 +21,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Handy: 2da006a56c6afc889739fb0fe81c7e53c99360f6
+  Handy: 595271a5abad91a388e42deb713aa8141013e0fe
   Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
-  TSPhotoPicker: 43bc5d2764901f9f6c5b2d529d99a5822111f9b9
+  TSPhotoPicker: e16e66dc1df7514bbbd0ef2113b2b73373362c0c
 
 PODFILE CHECKSUM: c7bd1505e85f873e914faabfd6fb4e9ca5ecb9f2
 

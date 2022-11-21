@@ -2,7 +2,7 @@ CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO
 FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Handy" "${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher" "${PODS_CONFIGURATION_BUILD_DIR}/SnapKit" "${PODS_CONFIGURATION_BUILD_DIR}/TSPhotoPicker"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Handy/Handy.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher/Kingfisher.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SnapKit/SnapKit.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/TSPhotoPicker/TSPhotoPicker.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -framework "AVFoundation" -framework "Accelerate" -framework "CFNetwork" -framework "Handy" -framework "Kingfisher" -framework "Photos" -framework "PhotosUI" -framework "SnapKit" -framework "TSPhotoPicker" -weak_framework "Combine" -weak_framework "SwiftUI"
+OTHER_LDFLAGS = $(inherited) -framework "AVFoundation" -framework "Accelerate" -framework "CFNetwork" -framework "CoreGraphics" -framework "CoreServices" -framework "Handy" -framework "Kingfisher" -framework "Photos" -framework "PhotosUI" -framework "SnapKit" -framework "TSPhotoPicker" -weak_framework "Combine" -weak_framework "SwiftUI"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.

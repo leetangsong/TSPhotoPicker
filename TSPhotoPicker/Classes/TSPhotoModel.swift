@@ -26,7 +26,7 @@ class TSPhotoModel: NSObject {
     var asset: PHAsset?
     /// 视频秒数
     var videoDuration: TimeInterval = -1
-    
+    var timeLength: String?
     var selectedIndex: Int = -1
     ///照片原始宽高
     var imageSize: CGSize = .zero
@@ -48,5 +48,10 @@ class TSPhotoModel: NSObject {
     
     var iCloudRequestID: PHImageRequestID = -1
     
+    init(asset: PHAsset, timeLength: String? = nil) {
+        self.asset = asset
+        self.type = TSPhotoManager.shared.transformAssetType(asset: asset)
+        self.timeLength = timeLength
+    }
     
 }

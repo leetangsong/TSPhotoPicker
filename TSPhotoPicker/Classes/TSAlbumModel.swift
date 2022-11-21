@@ -24,10 +24,10 @@ class TSAlbumModel: NSObject {
         self.result = result
         count = result.count
         if needFetchAssets {
-//            TSAssetManager.shared.getAssetModel(from: result) { models in
-//                self.models = models
-//                self.checkSelectedModels()
-//            }
+            TSPhotoManager.shared.getAssetModel(from: result) { models in
+                self.models = models
+                self.checkSelectedModels()
+            }
         }
     }
     func refreshFetchResult(){

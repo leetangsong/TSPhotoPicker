@@ -66,9 +66,6 @@ var tsPopMiddleBeginTime: CFTimeInterval = CACurrentMediaTime()
 
 
 extension UINavigationController{
-    
-    
-    
     fileprivate var tsPopProgress: CGFloat{
         var progress = (CACurrentMediaTime() - tsPopBeginTime) / tsPopDuration
         progress = min(1, progress)
@@ -95,8 +92,7 @@ extension UINavigationController{
         let progress = tsPushProgress
         handy.navigationContext.updateNavigationBar(fromVC: fromVC, toVC: toVC, progress: progress)
     }
-    public override class func swizzling() {
-        super.swizzling()
+    @objc static func navigationSwizzling() {
         let originalMethods = [
             #selector(UINavigationController.pushViewController(_:animated:)),
             #selector(UINavigationController.popViewController(animated:)),
@@ -104,6 +100,7 @@ extension UINavigationController{
             #selector(UINavigationController.popToViewController(_:animated:)),
             Selector.init(("_updateInteractiveTransition:")),
             #selector(UINavigationController.setNavigationBarHidden(_:animated:)),
+            #selector(UINavigationController.viewDidLayoutSubviews),
         ]
         let swizzledMethods = [
             #selector(UINavigationController.handy_pushViewController(_:animated:)),
@@ -111,7 +108,8 @@ extension UINavigationController{
             #selector(UINavigationController.handy_popToRootViewController(animated:)),
             #selector(UINavigationController.handy_popToViewController(_:animated:)),
             #selector(UINavigationController.handy_updateInteractiveTransition(_:)),
-            #selector(UINavigationController.handy_setNavigationBarHidden(_:animated:))
+            #selector(UINavigationController.handy_setNavigationBarHidden(_:animated:)),
+            #selector(UINavigationController.handy_viewDidLayoutSubviews),
         ]
 
         for (i, originalMethod) in originalMethods.enumerated() {
@@ -129,8 +127,8 @@ extension UINavigationController{
         }
     }
     
-    open override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    @objc private func handy_viewDidLayoutSubviews() {
+        handy_viewDidLayoutSubviews()
         handy.navigationContext.navigationBarUpdateFrame()
     }
     
@@ -272,7 +270,10 @@ extension UINavigationController: UIGestureRecognizerDelegate{
         if children.count == 1{
             return false
         }
-        
+        let velocityX = pan.velocity(in: nil).x
+        if velocityX <= 0{
+            return false
+        }
         let locationX = pan.location(in: nil).x
         
         if locationX>=80 && topViewController?.handy.isEnableFullScreenPopGesture == false{
@@ -425,7 +426,9 @@ extension HandyExtension where Base: UINavigationController{
     }
     
     func updateNavigationBarTint(for viewController: UIViewController) {
-        
+        if viewController != base.topViewController{
+            return
+        }
         let navigationBar = navigationBar
         var titleTextAttributes = navigationBar.titleTextAttributes ?? [:]
         titleTextAttributes[.foregroundColor] = viewController.handy.naviTitleColor
@@ -437,7 +440,9 @@ extension HandyExtension where Base: UINavigationController{
     
     
     func updateNavigationBarBackground(for viewController: UIViewController) {
-        
+        if viewController != base.topViewController{
+            return
+        }
         var bar: HandyNavigationBar?
         if navigationStyle == .none{
             base.navigationBar.barTintColor = viewController.handy.naviBackgroundColor
@@ -455,7 +460,9 @@ extension HandyExtension where Base: UINavigationController{
     }
     
     func updateNavigationBarShadow(for viewController: UIViewController) {
-        
+        if viewController != base.topViewController{
+            return
+        }
         var bar: HandyNavigationBar?
         
         if navigationStyle == .none{

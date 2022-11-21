@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import TSPhotoPicker
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -16,7 +16,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func photopicker(_ sender: Any) {
-        
+        let picker = TSPhotoPickerController.init(maxImagesCount: 4)
+        present(picker, animated: true)
         
     }
     override func didReceiveMemoryWarning() {

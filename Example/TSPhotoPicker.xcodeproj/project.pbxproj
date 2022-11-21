@@ -212,10 +212,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = SS8L6687K9;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = SS8L6687K9;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -484,6 +486,7 @@
 			baseConfigurationReference = 2F035E60BD893F572F290121 /* Pods-TSPhotoPicker_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = SS8L6687K9;
 				INFOPLIST_FILE = TSPhotoPicker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -500,6 +503,7 @@
 			baseConfigurationReference = 5D7BE1C46A23FEFB0AB3885C /* Pods-TSPhotoPicker_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = SS8L6687K9;
 				INFOPLIST_FILE = TSPhotoPicker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -515,6 +519,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F71CE6F38E36EE114EF0311F /* Pods-TSPhotoPicker_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = SS8L6687K9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -538,6 +543,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9D5C013FCB219589C49804B7 /* Pods-TSPhotoPicker_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = SS8L6687K9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
