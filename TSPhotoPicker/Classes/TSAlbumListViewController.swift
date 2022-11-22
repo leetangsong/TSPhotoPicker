@@ -26,6 +26,7 @@ class TSAlbumListViewController: UIViewController {
         tableView.register(TSAlbumCell.self, forCellReuseIdentifier: "TSAlbumCell")
         tableView.rowHeight = 55
         tableView.separatorStyle = .none
+        tableView.contentInsetAdjustmentBehavior = .never
         view.addSubview(tableView)
         
     }
@@ -50,6 +51,7 @@ extension TSAlbumListViewController: UITableViewDataSource, UITableViewDelegate{
         cell?.albumCellDidSetModelBlock = navi?.albumCellDidSetModelBlock
         cell?.albumCellDidLayoutSubviewsBlock = navi?.albumCellDidLayoutSubviewsBlock
         cell?.albumModel = albums[indexPath.row]
+        cell?.lineView.isHidden = indexPath.row == albums.count-1
         return cell!
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

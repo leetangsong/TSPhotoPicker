@@ -104,17 +104,12 @@ class TSPhotoSelectViewController: UIViewController {
         theme.statusBarStyle = TSPhotoPickerConfig.shared.statusBarStyle
         let closeItem = UIBarButtonItem.init(image: TSPhotoPickerTool.getImage(with: "icon_close"), style: .done, target: self, action: #selector(closePicker))
         handy.navigationItem.leftBarButtonItem = closeItem
-        
-        setupAlbumsListView()
         view.addSubview(bottomBar)
         bottomBar.doneTitle = TSPhotoPickerConfig.shared.doneTitle
         bottomBar.theme.barTintColor = navi?.naviBgColor
-        // Do any additional setup after loading the view.
+        setupAlbumsListView()
     }
-    public override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("fsdf")
-    }
+  
    
     @objc func closePicker(){
         dismiss(animated: true, completion: nil)
