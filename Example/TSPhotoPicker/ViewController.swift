@@ -7,6 +7,10 @@
 //
 
 import UIKit
+#if canImport(GDPerformanceView_Swift)
+import GDPerformanceView_Swift
+#endif
+
 import TSPhotoPicker
 class ViewController: UIViewController {
 
@@ -16,9 +20,15 @@ class ViewController: UIViewController {
     }
 
     @IBAction func photopicker(_ sender: Any) {
-        let picker = TSPhotoPickerController.init(maxImagesCount: 4)
-        present(picker, animated: true)
+//        let picker = TSPhotoPickerController.init(maxImagesCount: 4)
+//        present(picker, animated: true)
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        #if canImport(GDPerformanceView_Swift)
+        PerformanceMonitor.shared().start()
+        #endif
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

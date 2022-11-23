@@ -21,12 +21,6 @@
   "platforms": {
     "ios": "11.0"
   },
-  "source_files": "TSPhotoPicker/Classes/**/*",
-  "resource_bundles": {
-    "TSPhotoPicker": [
-      "TSPhotoPicker/Assets/*"
-    ]
-  },
   "pod_target_xcconfig": {
     "CODE_SIGN_IDENTITY": ""
   },
@@ -45,5 +39,30 @@
       "~> 6.3.1"
     ]
   },
+  "subspecs": [
+    {
+      "name": "Core",
+      "source_files": "Sources/TSPhotoPicker/Core/**/*.{swift}",
+      "resources": "Sources/TSPhotoPicker/Resources/*.{bundle}"
+    },
+    {
+      "name": "Picker",
+      "source_files": "Sources/TSPhotoPicker/Picker/**/*.{swift}",
+      "dependencies": {
+        "TSPhotoPicker/Core": [
+
+        ]
+      }
+    },
+    {
+      "name": "Editor",
+      "source_files": "Sources/TSPhotoPicker/Editor/**/*.{swift}",
+      "dependencies": {
+        "TSPhotoPicker/Core": [
+
+        ]
+      }
+    }
+  ],
   "swift_version": "5.0"
 }
