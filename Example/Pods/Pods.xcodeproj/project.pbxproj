@@ -155,6 +155,8 @@
 		B47845D0652A37E8C52B94AA3A34B617 /* Pods-TSPhotoPicker_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E10B674FE92A1F95CC4A991EEFF79FF8 /* Pods-TSPhotoPicker_Example-dummy.m */; };
 		B566F86E29305F1A0054202B /* AssetManager+AVAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = B566F86D29305F1A0054202B /* AssetManager+AVAsset.swift */; };
 		B566F87029305F870054202B /* PhotoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B566F86F29305F870054202B /* PhotoError.swift */; };
+		B5D8E9DB293890AD00A26247 /* Bundle+Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D8E9DA293890AD00A26247 /* Bundle+Core.swift */; };
+		B5D8E9DD2939A04000A26247 /* PhotoTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D8E9DC2939A04000A26247 /* PhotoTools.swift */; };
 		B5EA1247DBCC1556F08E7F4A5A7854BE /* Pods-TSPhotoPicker_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D510B0B887F56B3748C009C2E9B2B08 /* Pods-TSPhotoPicker_Tests-dummy.m */; };
 		B7DAC534D4F0A31CD95FF6613317D4E8 /* AVAssetImageDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA2ADB7C6FF6543E734123E808F0D7 /* AVAssetImageDataProvider.swift */; };
 		BA6758186158F65AE8730D5E20374A6A /* RequestModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BC577690ACC3A83C6E13DE5024D46 /* RequestModifier.swift */; };
@@ -447,6 +449,8 @@
 		B3439560FB6C44AB5E05052E621C6055 /* ConstraintDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDescription.swift; path = Sources/ConstraintDescription.swift; sourceTree = "<group>"; };
 		B566F86D29305F1A0054202B /* AssetManager+AVAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AssetManager+AVAsset.swift"; sourceTree = "<group>"; };
 		B566F86F29305F870054202B /* PhotoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoError.swift; sourceTree = "<group>"; };
+		B5D8E9DA293890AD00A26247 /* Bundle+Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Core.swift"; sourceTree = "<group>"; };
+		B5D8E9DC2939A04000A26247 /* PhotoTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTools.swift; sourceTree = "<group>"; };
 		B76339A194EBE1822C2371216EB73287 /* ImageCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageCache.swift; path = Sources/Cache/ImageCache.swift; sourceTree = "<group>"; };
 		B9DA6E131B312757136311609EB8DD01 /* ThemeStatusBarStylePicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeStatusBarStylePicker.swift; path = Sources/Handy/Theme/ThemePickers/ThemeStatusBarStylePicker.swift; sourceTree = "<group>"; };
 		BA0DD10C5A877F741DEC877FEEF21925 /* LayoutConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraintItem.swift; path = Sources/LayoutConstraintItem.swift; sourceTree = "<group>"; };
@@ -605,6 +609,7 @@
 				D59D7B2C3059F830383681A2A2285187 /* AssetManager+Authorization.swift */,
 				B566F86D29305F1A0054202B /* AssetManager+AVAsset.swift */,
 				EDEAA646BCC056857416801DACB6F533 /* PhotoManager.swift */,
+				B5D8E9DC2939A04000A26247 /* PhotoTools.swift */,
 			);
 			name = Util;
 			path = Sources/TSPhotoPicker/Core/Util;
@@ -744,6 +749,7 @@
 			isa = PBXGroup;
 			children = (
 				9A97EE4E21D5295646F70905C67EE0F3 /* Dictionary+Core.swift */,
+				B5D8E9DA293890AD00A26247 /* Bundle+Core.swift */,
 			);
 			name = Extension;
 			path = Sources/TSPhotoPicker/Core/Extension;
@@ -1575,11 +1581,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5D8E9DD2939A04000A26247 /* PhotoTools.swift in Sources */,
 				969F1E3D4873E9BC4B2E1573BB726373 /* AssetManager.swift in Sources */,
 				B566F86E29305F1A0054202B /* AssetManager+AVAsset.swift in Sources */,
 				069D087CC2DABD530BFB2BD26D6A8004 /* AssetManager+Asset.swift in Sources */,
 				A0E4F301F263723A9054101C319C6606 /* AssetManager+AssetCollection.swift in Sources */,
 				B2C623D9CE6003FECEC90B51DA877E69 /* AssetManager+Authorization.swift in Sources */,
+				B5D8E9DB293890AD00A26247 /* Bundle+Core.swift in Sources */,
 				03577EA7C7B82BD4AFC94B63BB3939C1 /* Dictionary+Core.swift in Sources */,
 				1520278F53F95027D21402AE1079C98C /* ImageView.swift in Sources */,
 				B566F87029305F870054202B /* PhotoError.swift in Sources */,

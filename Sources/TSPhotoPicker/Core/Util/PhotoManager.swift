@@ -11,6 +11,9 @@ import PhotosUI
 public final class PhotoManager: NSObject {
     public static let shared = PhotoManager()
     
+    /// 当前语言文件，每次创建PhotoPickerController判断是否需要重新创建
+    var languageBundle: Bundle?
+    
     
     var thumbnailLoadMode: ThumbnailLoadMode = .complete
 }
