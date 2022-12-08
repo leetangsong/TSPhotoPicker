@@ -153,6 +153,7 @@
 		B397E00EBB9C709E7CF479043EB8637F /* ThemeTabBarAppearancePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7729C41D5D667F2D700DFDAB2C18AAD4 /* ThemeTabBarAppearancePicker.swift */; };
 		B42D34D0F6338CA40037A5F5C54F08E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35504D9876F7BF4637D248521B9D3A2 /* UIKit.framework */; };
 		B47845D0652A37E8C52B94AA3A34B617 /* Pods-TSPhotoPicker_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E10B674FE92A1F95CC4A991EEFF79FF8 /* Pods-TSPhotoPicker_Example-dummy.m */; };
+		B528F2452941C282009616B9 /* AssetManager+VideoURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B528F2442941C282009616B9 /* AssetManager+VideoURL.swift */; };
 		B566F86E29305F1A0054202B /* AssetManager+AVAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = B566F86D29305F1A0054202B /* AssetManager+AVAsset.swift */; };
 		B566F87029305F870054202B /* PhotoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B566F86F29305F870054202B /* PhotoError.swift */; };
 		B5D8E9DB293890AD00A26247 /* Bundle+Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D8E9DA293890AD00A26247 /* Bundle+Core.swift */; };
@@ -447,6 +448,7 @@
 		B1F79B50D71E50AC46B901881D0A6D2C /* GDPerformanceView-Swift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "GDPerformanceView-Swift-Info.plist"; sourceTree = "<group>"; };
 		B30C53CAF0043D697E021D7B36BE87BC /* ThemePicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemePicker.swift; path = Sources/Handy/Theme/ThemePicker.swift; sourceTree = "<group>"; };
 		B3439560FB6C44AB5E05052E621C6055 /* ConstraintDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDescription.swift; path = Sources/ConstraintDescription.swift; sourceTree = "<group>"; };
+		B528F2442941C282009616B9 /* AssetManager+VideoURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AssetManager+VideoURL.swift"; sourceTree = "<group>"; };
 		B566F86D29305F1A0054202B /* AssetManager+AVAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AssetManager+AVAsset.swift"; sourceTree = "<group>"; };
 		B566F86F29305F870054202B /* PhotoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoError.swift; sourceTree = "<group>"; };
 		B5D8E9DA293890AD00A26247 /* Bundle+Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Core.swift"; sourceTree = "<group>"; };
@@ -608,6 +610,7 @@
 				0C42E5C16A7FB4B3CCB097AA56A29C80 /* AssetManager+AssetCollection.swift */,
 				D59D7B2C3059F830383681A2A2285187 /* AssetManager+Authorization.swift */,
 				B566F86D29305F1A0054202B /* AssetManager+AVAsset.swift */,
+				B528F2442941C282009616B9 /* AssetManager+VideoURL.swift */,
 				EDEAA646BCC056857416801DACB6F533 /* PhotoManager.swift */,
 				B5D8E9DC2939A04000A26247 /* PhotoTools.swift */,
 			);
@@ -1591,6 +1594,7 @@
 				03577EA7C7B82BD4AFC94B63BB3939C1 /* Dictionary+Core.swift in Sources */,
 				1520278F53F95027D21402AE1079C98C /* ImageView.swift in Sources */,
 				B566F87029305F870054202B /* PhotoError.swift in Sources */,
+				B528F2452941C282009616B9 /* AssetManager+VideoURL.swift in Sources */,
 				0955D7CF79CBCBA0596A9292AD6774CB /* PhotoManager.swift in Sources */,
 				AA0624494E78870A32277E81D6EEBAC1 /* TSPhotoPicker-dummy.m in Sources */,
 				B0A3467042D97147B3D208E408FD829C /* TSSelectBoxConfiguration.swift in Sources */,

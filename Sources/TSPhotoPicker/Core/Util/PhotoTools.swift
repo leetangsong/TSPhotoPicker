@@ -8,6 +8,7 @@
 import Foundation
 import Photos
 import Kingfisher
+import Handy
 public struct PhotoTools {
     /// 根据PHAsset资源获取对应的目标大小
     public static func transformTargetWidthToSize(targetWidth: CGFloat,asset: PHAsset) -> CGSize {
@@ -55,7 +56,7 @@ public struct PhotoTools {
         }
         let options = [AVURLAssetPreferPreciseDurationAndTimingKey: false]
         let urlAsset = AVURLAsset.init(url: videoURL, options: options)
-//        let second = TimeInterval(urlAsset.duration.value) / TimeInterval(urlAsset.duration.timescale)
+        //        let second = TimeInterval(urlAsset.duration.value) / TimeInterval(urlAsset.duration.timescale)
         return TimeInterval(round(urlAsset.duration.seconds))
     }
     
@@ -90,8 +91,10 @@ public struct PhotoTools {
     }
     
     /// 根据视频获取视频封面
-    public static func getVideoThumbnailImage(avAsset: AVAsset?,
-                                              atTime: TimeInterval) -> UIImage? {
+    public static func getVideoThumbnailImage(
+        avAsset: AVAsset?,
+        atTime: TimeInterval
+    ) -> UIImage? {
         if let avAsset = avAsset{
             let assetImageGenerator = AVAssetImageGenerator.init(asset: avAsset)
             assetImageGenerator.appliesPreferredTrackTransform = true
@@ -111,6 +114,105 @@ public struct PhotoTools {
         return nil
         
     }
+    /// 获视频缩略图
+    @discardableResult
+    public static func getVideoThumbnailImage(
+        url: URL,
+        atTime: TimeInterval,
+        imageGenerator: ((AVAssetImageGenerator) -> Void)? = nil,
+        completion: @escaping (URL, UIImage?, AVAssetImageGenerator.Result) -> Void
+    ) -> AVAsset{
+        let asset = AVURLAsset(url: url)
+        asset.loadValuesAsynchronously(forKeys: ["duration"]) {
+            if asset.statusOfValue(forKey: "duration", error: nil) != .loaded {
+                DispatchQueue.main.async {
+                    completion(url, nil, .failed)
+                }
+                return
+            }
+            let generator = AVAssetImageGenerator.init(asset: asset)
+            let time = CMTime.init(value: CMTimeValue(atTime), timescale: asset.duration.timescale)
+            let array = [NSValue(time: time)]
+            generator.generateCGImagesAsynchronously(forTimes: array) { (requestedTime, cgImage, actualTime, result, error) in
+                if let image = cgImage, result == .succeeded {
+                    var image = UIImage(cgImage: image)
+                    if image.imageOrientation != .up, let img = image.handy.normalizedImage() {
+                        image = img
+                    }
+                    DispatchQueue.main.async {
+                        completion(url, image, result)
+                    }
+                }else {
+                    DispatchQueue.main.async {
+                        completion(url, nil, result)
+                    }
+                }
+                DispatchQueue.main.async {
+                    imageGenerator?(generator)
+                }
+            }
+        }
+        return asset
+    }
+    
+#if canImport(Kingfisher)
+    public static func downloadNetworkImage(
+        with url: URL,
+        cancelOrigianl: Bool = true,
+        options: KingfisherOptionsInfo,
+        progressBlock: DownloadProgressBlock? = nil,
+        completionHandler: ((UIImage?) -> Void)? = nil
+    ) {
+        let key = url.cacheKey
+        if ImageCache.default.isCached(forKey: key) {
+            ImageCache.default.retrieveImage(
+                forKey: key,
+                options: options
+            ) { (result) in
+                switch result {
+                case .success(let value):
+                    completionHandler?(value.image)
+                case .failure(_):
+                    completionHandler?(nil)
+                }
+            }
+            return
+        }
+        ImageDownloader.default.downloadImage(
+            with: url,
+            options: options,
+            progressBlock: progressBlock
+        ) { (result) in
+            switch result {
+            case .success(let value):
+                if let gifImage = DefaultImageProcessor.default.process(
+                    item: .data(value.originalData),
+                    options: .init([])
+                ) {
+                    if cancelOrigianl {
+                        ImageCache.default.store(
+                            gifImage,
+                            original: value.originalData,
+                            forKey: key
+                        )
+                    }
+                    completionHandler?(gifImage)
+                    return
+                }
+                if cancelOrigianl {
+                    ImageCache.default.store(
+                        value.image,
+                        original: value.originalData,
+                        forKey: key
+                    )
+                }
+                completionHandler?(value.image)
+            case .failure(_):
+                completionHandler?(nil)
+            }
+        }
+    }
+#endif
     
     
 }
