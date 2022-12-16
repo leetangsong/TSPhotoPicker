@@ -8,9 +8,9 @@
 import Foundation
 
 
-class ThemeDeallocBlockExecutor{
-    var pickerHelper: ThemePickerHelper?
-    init(pickerHelper: ThemePickerHelper?) {
+public class ThemeDeallocBlockExecutor{
+    public var pickerHelper: ThemePickerHelper?
+    public init(pickerHelper: ThemePickerHelper?) {
         self.pickerHelper = pickerHelper
     }
     deinit {

@@ -189,4 +189,23 @@ public extension PhotoTools {
         }
     }
     
+    @discardableResult
+    static func copyFile(at srcURL: URL, to dstURL: URL) -> Bool {
+        return FileManager.handy.copyFile(at: srcURL, to: dstURL)
+    }
+    
+    @discardableResult
+    static func removeFile(fileURL: URL) -> Bool {
+        removeFile(filePath: fileURL.path)
+    }
+    
+    @discardableResult
+    static func removeFile(filePath: String) -> Bool {
+        return FileManager.handy.removeFile(filePath: filePath)
+    }
+    
+    static func folderExists(atPath path: String) {
+        FileManager.handy.folderExists(atPath: path)
+    }
+    
 }

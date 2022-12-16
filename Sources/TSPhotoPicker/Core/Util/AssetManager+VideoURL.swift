@@ -53,7 +53,22 @@ public extension AssetManager {
             resultHandler(.failure(.removeFileFailed))
             return
         }
-        
+        let videoURL = fileURL
+        let options = PHAssetResourceRequestOptions()
+        options.isNetworkAccessAllowed = true
+        PHAssetResourceManager.default().writeData(
+            for: videoResource,
+            toFile: videoURL,
+            options: options
+        ) { (error) in
+            DispatchQueue.main.async {
+                if error == nil {
+                    resultHandler(.success(videoURL))
+                }else {
+                    resultHandler(.failure(.assetResourceWriteDataFailed(error!)))
+                }
+            }
+        }
     }
     
     
