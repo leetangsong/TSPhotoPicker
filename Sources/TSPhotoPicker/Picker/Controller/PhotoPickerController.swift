@@ -8,7 +8,8 @@
 import UIKit
 import Handy
 import Photos
-open class PhotoPickerController: BaseNavigationViewController<PickerConfiguration> {
+open class PhotoPickerController: BaseNavigationController<PickerConfiguration> {
+    
     public weak var pickerDelegate: PhotoPickerControllerDelegate?
    
     public typealias FinishHandler = (PickerResult, PhotoPickerController) -> Void
@@ -139,6 +140,7 @@ open class PhotoPickerController: BaseNavigationViewController<PickerConfigurati
         if modalPresentationStyle != .custom {
             view.theme.backgroundColor = PhotoTools.getColorPicker(config.navigationViewBackgroundColor)
         }
+        requestAuthorization()
         // Do any additional setup after loading the view.
     }
     

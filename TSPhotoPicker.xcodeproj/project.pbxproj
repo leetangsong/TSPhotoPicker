@@ -43,7 +43,7 @@
 		B5C8272B296802F800C55759 /* BaseConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C826E0296802F800C55759 /* BaseConfiguration.swift */; };
 		B5C8272C296802F800C55759 /* SelectBoxConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C826E1296802F800C55759 /* SelectBoxConfiguration.swift */; };
 		B5C8272D296802F800C55759 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C826E3296802F800C55759 /* BaseViewController.swift */; };
-		B5C8272E296802F800C55759 /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C826E4296802F800C55759 /* BaseNavigationViewController.swift */; };
+		B5C8272E296802F800C55759 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C826E4296802F800C55759 /* BaseNavigationController.swift */; };
 		B5C8272F296802F800C55759 /* TSPhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C826E5296802F800C55759 /* TSPhotoPicker.swift */; };
 		B5C82730296802F800C55759 /* ExportPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C826E7296802F800C55759 /* ExportPreset.swift */; };
 		B5C82731296802F800C55759 /* ThemeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C826E8296802F800C55759 /* ThemeError.swift */; };
@@ -122,7 +122,7 @@
 		B5C826E0296802F800C55759 /* BaseConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseConfiguration.swift; sourceTree = "<group>"; };
 		B5C826E1296802F800C55759 /* SelectBoxConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectBoxConfiguration.swift; sourceTree = "<group>"; };
 		B5C826E3296802F800C55759 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		B5C826E4296802F800C55759 /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
+		B5C826E4296802F800C55759 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		B5C826E5296802F800C55759 /* TSPhotoPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSPhotoPicker.swift; sourceTree = "<group>"; };
 		B5C826E7296802F800C55759 /* ExportPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportPreset.swift; sourceTree = "<group>"; };
 		B5C826E8296802F800C55759 /* ThemeError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeError.swift; sourceTree = "<group>"; };
@@ -325,7 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				B5C826E3296802F800C55759 /* BaseViewController.swift */,
-				B5C826E4296802F800C55759 /* BaseNavigationViewController.swift */,
+				B5C826E4296802F800C55759 /* BaseNavigationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -627,7 +627,7 @@
 				B5C82711296802F800C55759 /* Font+Core.swift in Sources */,
 				B5C82725296802F800C55759 /* AssetManager+Authorization.swift in Sources */,
 				B5C8273D296802F800C55759 /* PhotoListConfiguration.swift in Sources */,
-				B5C8272E296802F800C55759 /* BaseNavigationViewController.swift in Sources */,
+				B5C8272E296802F800C55759 /* BaseNavigationController.swift in Sources */,
 				B5C82740296802F800C55759 /* PhotoPreviewViewController.swift in Sources */,
 				B5C8274C296802F800C55759 /* AlbumViewCell.swift in Sources */,
 				B5C8272B296802F800C55759 /* BaseConfiguration.swift in Sources */,
@@ -808,6 +808,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Example/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "是否允许此App使用你的相机";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "是否允许此App访问你的媒体资料库";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -837,6 +839,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Example/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "是否允许此App使用你的相机";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "是否允许此App访问你的媒体资料库";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

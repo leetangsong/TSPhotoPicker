@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func photopicker(_ sender: Any) {
-        let vc = AlbumViewController.init(config: AlbumListConfiguration())
+        let vc = PhotoPickerController.init(config: .init())
 //        let picker = TSPhotoPickerController.init(maxImagesCount: 4)
         present(vc, animated: true)
         

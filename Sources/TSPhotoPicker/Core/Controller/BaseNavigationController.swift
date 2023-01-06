@@ -1,5 +1,5 @@
 //
-//  BaseNavigationViewController.swift
+//  BaseNavigationController.swift
 //  TSPhotoPicker
 //
 //  Created by leetangsong on 2023/1/5.
@@ -7,8 +7,10 @@
 
 import UIKit
 import Handy
-open class BaseNavigationViewController<T: BaseConfiguration>: UINavigationController {
 
+
+open class BaseNavigationController<T: BaseConfiguration>: UINavigationController {
+    
     /// 相关配置
     public let config: T
     

@@ -22,6 +22,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="照片选择器"/>
+                                <connections>
+                                    <action selector="photopicker:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HDZ-EN-NI6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

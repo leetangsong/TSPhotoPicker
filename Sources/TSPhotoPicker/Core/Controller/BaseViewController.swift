@@ -8,7 +8,6 @@
 import UIKit
 import Handy
 open class BaseViewController: UIViewController {
-
     open override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
@@ -30,7 +29,8 @@ open class BaseViewController: UIViewController {
     }
     ///设置导航栏
     open func setupNavigation(){
-        if let navi = navigationController as? BaseNavigationViewController{
+        if let navi = navigationController as?
+            BaseNavigationController{
             let config = navi.config
             theme.naviTitleColor = PhotoTools.getColorPicker(config.navigationTitleColor)
             theme.naviTintColor = PhotoTools.getColorPicker(config.navigationTintColor)
@@ -39,7 +39,6 @@ open class BaseViewController: UIViewController {
             theme.naviBackgroundColor = PhotoTools.getColorPicker(config.navigationBarBackgroundColor)
             handy.naviIsTranslucent = config.navigationBarIsTranslucent
         }
-        
     }
     
     @objc open func deviceOrientationDidChanged(notify: Notification) {
