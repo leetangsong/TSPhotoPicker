@@ -78,9 +78,11 @@ public struct AssetManager {
     }
     
     /// 保存图片到系统相册
-    public static func saveSystemAlbum(forImage image: Any,
-                                       customAlbumName: String? = nil,
-                                       completion: @escaping (PHAsset?) -> Void) {
+    public static func saveSystemAlbum(
+        forImage image: Any,
+        customAlbumName: String? = nil,
+        completion: @escaping (PHAsset?) -> Void
+    ) {
         saveSystemAlbum(
             forAsset: image,
             mediaType: .image,
@@ -88,7 +90,19 @@ public struct AssetManager {
             completion: completion
         )
     }
-    
+    /// 保存视频到系统相册
+    public static func saveSystemAlbum(
+        forVideoURL videoURL: URL,
+        customAlbumName: String? = nil,
+        completion: @escaping (PHAsset?) -> Void
+    ) {
+        saveSystemAlbum(
+            forAsset: videoURL,
+            mediaType: .video,
+            customAlbumName: customAlbumName,
+            completion: completion
+        )
+    }
     public static func saveLivePhotoToAlbum(imageURL: URL,
                                             videoURL: URL,
                                             customAlbumName: String? = nil,

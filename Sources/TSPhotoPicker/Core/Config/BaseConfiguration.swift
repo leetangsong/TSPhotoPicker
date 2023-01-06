@@ -6,10 +6,13 @@
 //
 
 import Foundation
-
+import Handy
 open class BaseConfiguration {
     
     public var modalPresentationStyle: UIModalPresentationStyle
+    
+    ///导航栏样式
+    public var navigationStyle: HandyNavigationStyle = .system
     
     /// 如果自带的语言不够，可以添加自定义的语言文字
     /// PhotoManager.shared.customLanguages 自定义语言数组
@@ -17,8 +20,22 @@ open class BaseConfiguration {
     /// 语言类型
     public var languageType: LanguageType = .system
     
-    /// 外观风格
-    public var appearanceIndex: Int = 0
+    var statusBarStyle: Any = [UIStatusBarStyle.default, UIStatusBarStyle.lightContent]
+    /// 半透明效果
+    public var navigationBarIsTranslucent: Bool = true
+    
+    /// 导航控制器背景颜色
+    public var navigationViewBackgroundColor: Any = [UIColor.white, "#2E2F30"]
+    
+    /// 导航栏样式
+    public var navigationBarStyle: Any = [UIBarStyle.default, UIBarStyle.black]
+    /// 导航栏背景颜色
+    public var navigationBarBackgroundColor: Any?
+    
+    /// 导航栏标题颜色
+    public var navigationTitleColor: Any = [UIColor.black, UIColor.white]
+    
+    public var navigationTintColor: Any?
     
     /// 隐藏状态栏
     public var prefersStatusBarHidden: Bool = false

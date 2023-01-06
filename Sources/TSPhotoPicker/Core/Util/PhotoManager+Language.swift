@@ -8,7 +8,67 @@
 import Foundation
 
 extension PhotoManager {
-    
+    /// 创建语言Bundle
+    /// - Parameter languageType: 对应的语言类型
+    /// - Returns: 语言Bundle
+    @discardableResult
+    public func createLanguageBundle(languageType: LanguageType) -> Bundle? {
+        if bundle == nil {
+            createBundle()
+        }
+        if self.languageType != languageType || isCustomLanguage {
+            // 与上次语言不一致，重新创建
+            languageBundle = nil
+        }
+        isCustomLanguage = false
+        if languageBundle == nil {
+            let language: String
+            switch languageType {
+            case .simplifiedChinese:
+                language = "zh-Hans"
+            case .traditionalChinese:
+                language = "zh-Hant"
+            case .japanese:
+                language = "ja"
+            case .korean:
+                language = "ko"
+            case .english:
+                language = "en"
+            case .thai:
+                language = "th"
+            case .indonesia:
+                language = "id"
+            case .vietnamese:
+                language = "vi"
+            case .russian:
+                language = "ru"
+            case .german:
+                language = "de"
+            case .french:
+                language = "fr"
+            case .arabic:
+                language = "ar"
+            default:
+                if let fixedLanguage = fixedCustomLanguage {
+                    isCustomLanguage = true
+                    languageBundle = Bundle(path: fixedLanguage.path)
+                    return languageBundle
+                }
+                for customLanguage in customLanguages
+                where Locale.preferredLanguages.contains(customLanguage.language) {
+                    isCustomLanguage = true
+                    languageBundle = Bundle(path: customLanguage.path)
+                    return languageBundle
+                }
+                language = languageStr
+            }
+            if let path = bundle?.path(forResource: language, ofType: "lproj") {
+                languageBundle = Bundle(path: path)
+            }
+            self.languageType = languageType
+        }
+        return languageBundle
+    }
     
     var languageStr: String {
         var language = "en"

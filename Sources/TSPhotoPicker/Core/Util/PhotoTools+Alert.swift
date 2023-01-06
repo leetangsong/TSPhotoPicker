@@ -5,7 +5,7 @@
 //  Created by leetangsong on 2022/12/9.
 //
 
-import Foundation
+import UIKit
 
 extension PhotoTools {
     /// 跳转系统设置界面

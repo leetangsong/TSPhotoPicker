@@ -6,24 +6,77 @@
 //
 
 import UIKit
-
-class AlbumViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+import Handy
+public class AlbumViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate  {
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    public lazy var tableView: UITableView = {
+        let tableView = UITableView(
+            frame: .zero,
+            style: .plain
+        )
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.separatorStyle = .none
+        tableView.register(
+            AlbumViewCell.self,
+            forCellReuseIdentifier: "cellId"
+        )
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            // Fallback on earlier versions
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
+        return tableView
+    }()
+    
+    let config: AlbumListConfiguration
+    var assetCollectionsArray: [PhotoAssetCollection] = []
+    public init(config: AlbumListConfiguration) {
+        self.config = config
+        super.init(nibName: nil, bundle: nil)
+//        self.modalPresentationStyle = .fullScreen
     }
-    */
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        guard let picker = pickerController else { return }
+        view.theme.backgroundColor = PhotoTools.getColorPicker(config.backgroundColor)
+        
+        
+    }
+    
+    
+    
+    public func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
+        assetCollectionsArray.count
+    }
+    public func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "cellId"
+        ) as! AlbumViewCell
+        let assetCollection = assetCollectionsArray[indexPath.row]
+        cell.assetCollection = assetCollection
+        cell.config = config
+        return cell
+    }
+    public func tableView(
+        _ tableView: UITableView,
+        heightForRowAt indexPath: IndexPath
+    ) -> CGFloat {
+        config.cellHeight
+    }
 
 }

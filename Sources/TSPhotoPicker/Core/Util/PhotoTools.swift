@@ -5,7 +5,7 @@
 //  Created by leetangsong on 2022/12/2.
 //
 
-import Foundation
+import UIKit
 import Photos
 import Kingfisher
 import Handy
@@ -213,6 +213,198 @@ public struct PhotoTools {
         }
     }
 #endif
+    static func transformImageSize(
+        _ imageSize: CGSize,
+        to view: UIView
+    ) -> CGRect {
+        return transformImageSize(
+            imageSize,
+            toViewSize: view.handy.size
+        )
+    }
     
+    static func transformImageSize(
+        _ imageSize: CGSize,
+        toViewSize viewSize: CGSize,
+        directions: [PhotoToolsTransformImageSizeDirections] = [.horizontal, .vertical]
+    ) -> CGRect {
+        var size: CGSize = .zero
+        var center: CGPoint = .zero
+        
+        func handleVertical(
+            _ imageSize: CGSize,
+            _ viewSize: CGSize
+        ) -> (CGSize, CGPoint) {
+            let aspectRatio = viewSize.width / imageSize.width
+            let contentWidth = viewSize.width
+            let contentHeight = imageSize.height * aspectRatio
+            let _size = CGSize(width: contentWidth, height: contentHeight)
+            if contentHeight < viewSize.height {
+                let center = CGPoint(x: viewSize.width * 0.5, y: viewSize.height * 0.5)
+                return (_size, center)
+            }
+            return (_size, .zero)
+        }
+        func handleHorizontal(
+            _ imageSize: CGSize,
+            _ viewSize: CGSize
+        ) -> (CGSize, CGPoint) {
+            let aspectRatio = viewSize.height / imageSize.height
+            var contentWidth = imageSize.width * aspectRatio
+            var contentHeight = viewSize.height
+            if contentWidth > viewSize.width {
+                contentHeight = viewSize.width / contentWidth * contentHeight
+                contentWidth = viewSize.width
+            }
+            let _size = CGSize(width: contentWidth, height: contentHeight)
+            if contentHeight < viewSize.height {
+                let center = CGPoint(x: viewSize.width * 0.5, y: viewSize.height * 0.5)
+                return (_size, center)
+            }
+            return (_size, .zero)
+        }
+        
+        if directions.contains(.horizontal) && directions.contains(.vertical) {
+            if UIDevice.isPortrait {
+                let content = handleVertical(imageSize, viewSize)
+                size = content.0
+                center = content.1
+            }else {
+                let content = handleHorizontal(imageSize, viewSize)
+                size = content.0
+                if !content.1.equalTo(.zero) {
+                    center = content.1
+                }
+            }
+        }else if directions.contains(.horizontal) {
+            size = handleHorizontal(imageSize, viewSize).0
+        }else if directions.contains(.vertical) {
+            let content = handleVertical(imageSize, viewSize)
+            size = content.0
+            center = content.1
+        }
+//        if UIDevice.isPortrait {
+//            let aspectRatio = viewSize.width / imageSize.width
+//            let contentWidth = viewSize.width
+//            let contentHeight = imageSize.height * aspectRatio
+//            imageSize = CGSize(width: contentWidth, height: contentHeight)
+//            if contentHeight < viewSize.height {
+//                imageCenter = CGPoint(x: viewSize.width * 0.5, y: viewSize.height * 0.5)
+//            }
+//        }else {
+//            let aspectRatio = viewSize.height / imageSize.height
+//            let contentWidth = imageSize.width * aspectRatio
+//            let contentHeight = viewSize.height
+//            imageSize = CGSize(width: contentWidth, height: contentHeight)
+//        }
+        var rectY: CGFloat
+        if center.equalTo(.zero) {
+            rectY = 0
+        }else {
+            rectY = (viewSize.height - size.height) * 0.5
+        }
+        return CGRect(x: (viewSize.width - size.width) * 0.5, y: rectY, width: size.width, height: size.height)
+    }
     
+    static func exportSessionFileLengthLimit(
+        seconds: Double,
+        maxSize: Int? = nil,
+        exportPreset: ExportPreset,
+        videoQuality: Int
+    ) -> Int64 {
+        if videoQuality > 0 {
+            let quality = Double(min(videoQuality, 10))
+            if let maxSize = maxSize {
+                return Int64(Double(maxSize) * (quality / 10))
+            }
+            var ratioParam: Double = 0
+            if exportPreset == .ratio_640x480 {
+                ratioParam = 0.02
+            }else if exportPreset == .ratio_960x540 {
+                ratioParam = 0.04
+            }else if exportPreset == .ratio_1280x720 {
+                ratioParam = 0.08
+            }
+            return Int64(seconds * ratioParam * quality * 1000 * 1000)
+        }
+        return 0
+    }
+    
+    static func imageCompress(
+        _ data: Data,
+        compressionQuality: CGFloat
+    ) -> Data? {
+        guard var resultImage = UIImage(data: data) else {
+            return nil
+        }
+        let compression = max(0.1, min(0.9, compressionQuality))
+        let maxLength = Int(CGFloat(data.count) * compression)
+        var data = data
+        
+        var lastDataLength = 0
+        while data.count > maxLength && data.count != lastDataLength {
+            let dataCount = data.count
+            lastDataLength = dataCount
+            let ratio = max(CGFloat(maxLength) / CGFloat(dataCount), compression)
+            let size = CGSize(
+                width: Int(resultImage.size.width * ratio),
+                height: Int(resultImage.size.height * ratio)
+            )
+            UIGraphicsBeginImageContext(size)
+            resultImage.draw(in: CGRect(origin: .zero, size: size))
+            guard let image = UIGraphicsGetImageFromCurrentImageContext(),
+                  let imagedata = image.jpegData(compressionQuality: 1)
+            else {
+                UIGraphicsEndImageContext()
+                return data
+            }
+            UIGraphicsEndImageContext()
+            resultImage = image
+            data = imagedata
+        }
+        return data
+    }
+    
+    static func getBasicAnimation(
+        _ keyPath: String,
+        _ fromValue: Any?,
+        _ toValue: Any?,
+        _ duration: TimeInterval,
+        _ timingFunctionName: CAMediaTimingFunctionName = .linear
+    ) -> CABasicAnimation {
+        let animation = CABasicAnimation(keyPath: keyPath)
+        animation.fromValue = fromValue
+        animation.toValue = toValue
+        animation.duration = duration
+        animation.fillMode = .backwards
+        animation.timingFunction = .init(name: timingFunctionName)
+        return animation
+    }
+    
+    static func getGradientShadowLayer(_ isTop: Bool) -> CAGradientLayer {
+        let layer = CAGradientLayer()
+        layer.contentsScale = UIScreen.main.scale
+        let blackColor = UIColor.black
+        layer.colors = [blackColor.withAlphaComponent(0).cgColor,
+                        blackColor.withAlphaComponent(0.2).cgColor,
+                        blackColor.withAlphaComponent(0.4).cgColor,
+                        blackColor.withAlphaComponent(0.6).cgColor,
+                        blackColor.withAlphaComponent(0.8).cgColor]
+        if isTop {
+            layer.startPoint = CGPoint(x: 0, y: 1)
+            layer.endPoint = CGPoint(x: 0, y: 0)
+        }else {
+            layer.startPoint = CGPoint(x: 0, y: 0)
+            layer.endPoint = CGPoint(x: 0, y: 1)
+        }
+        layer.locations = [0.1, 0.3, 0.5, 0.7, 0.9]
+        layer.borderWidth = 0.0
+        return layer
+    }
+    private init() { }
+}
+
+enum PhotoToolsTransformImageSizeDirections {
+    case horizontal
+    case vertical
 }

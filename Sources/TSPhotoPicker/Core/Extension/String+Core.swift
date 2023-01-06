@@ -8,6 +8,10 @@
 import Foundation
 import Handy
 extension String{
+    
+    var localized: String { Bundle.localizedString(for: self) }
+    
+    
     static func fileName(suffix: String) -> String {
         var uuid = UUID().uuidString
         uuid = uuid.replacingOccurrences(of: "-", with: "").lowercased()

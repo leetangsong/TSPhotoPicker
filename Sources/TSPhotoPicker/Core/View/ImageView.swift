@@ -7,7 +7,7 @@
 
 import UIKit
 import Kingfisher
-class ImageView: UIView {
+final class ImageView: UIView {
 
     lazy var imageView: UIImageView = {
         var imageView: UIImageView

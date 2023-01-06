@@ -7,7 +7,25 @@
 
 import Foundation
 
+public enum PhotoError: LocalizedError {
+    
+    public enum `Type` {
+        case imageEmpty
+        case videoEmpty
+        case exportFailed
+    }
+    
+    case error(type: Type, message: String)
+}
 
+extension PhotoError {
+    public var errorDescription: String? {
+        switch self {
+        case let .error(_, message):
+            return message
+        }
+    }
+}
 
 public enum AssetError: Error {
     /// 写入文件失败
